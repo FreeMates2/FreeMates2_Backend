@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import phytolens.global.error.domain.ErrorCode;
-import phytolens.global.error.dto.ErrorResponseDto;
-import phytolens.global.error.exception.BusinessException;
+import project.freemates2.global.error.domain.ErrorCode;
+import project.freemates2.global.error.dto.ErrorResponseDto;
+import project.freemates2.global.error.exception.BusinessException;
 
 @Slf4j
 @RestControllerAdvice
