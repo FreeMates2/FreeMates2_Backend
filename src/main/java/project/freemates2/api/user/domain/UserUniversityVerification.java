@@ -38,6 +38,7 @@ public class UserUniversityVerification extends BaseEntity {
   @JoinColumn(name = "university_id", nullable = false)
   private University university;
 
+  @Column(nullable = false, unique = true)
   private String studentEmail;
 
   private LocalDateTime verifiedAt; // 인증 시점 (수동)
