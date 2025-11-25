@@ -1,0 +1,37 @@
+name: "🐞 Bug report"
+description: "버그 제보"
+title: "[Bug] "
+labels: ["bug"]
+assignees: []
+body:
+  - type: textarea
+    id: desc
+    attributes:
+      label: "📄버그 설명"
+      description: "무엇이 어떻게 잘못되었는지"
+      placeholder: "증상 요약, 에러 메시지, 영향 범위 등"
+    validations:
+      required: true
+
+  # 👉 문제 원인 / 해결 방안 / 해결 결과
+  - type: textarea
+    id: cause
+    attributes:
+      label: "🔌가설 및 결과"
+      description: "근본 원인(RCA) 또는 현재 가설"
+      placeholder: "- 가설: ...\n- 로그/스택트레이스: ...\n- 관련 PR/커밋: ..."
+
+
+  - type: textarea
+    id: resolution
+    attributes:
+      label: "🧪해결 결과(사후 보고)"
+      description: "적용한 변경, 배포 상태, 모니터링 결과"
+      placeholder: "- 적용 변경: ...\n- 배포(일시/버전): ...\n- 모니터링/알람: ...\n- 재발 방지: ..."
+
+  - type: textarea
+    id: refs
+    attributes:
+      label: "참고 자료"
+      description: "관련 이슈/PR/문서/링크 등"
+      placeholder: "- 링크 또는 간단한 메모"

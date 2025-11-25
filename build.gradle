@@ -34,6 +34,38 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+    // JAVA 시간 처리
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
+
+    // json
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // Redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // webFlux
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // PostgreSQL
+    implementation 'org.hibernate:hibernate-spatial:6.6.4.Final'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // MapStruct
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // netty
+    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
+
+    // xml 처리
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml"
 }
 
 tasks.named('test') {

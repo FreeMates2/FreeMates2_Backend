@@ -1,0 +1,75 @@
+name: "✨ Feature"
+description: "새로운 기능 추가 혹은 개선 요청"
+title: "[기능]"
+labels: ["feature"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        아래 항목을 채우면 기능 설명/작업/일정/참고자료/API 명세를 일관된 형식으로 기록할 수 있습니다.
+
+  # 문제
+  - type: textarea
+    id: problem
+    attributes:
+      label: "📄 문제발생"
+      description: "어떤 문제가 발생하고 있는지에 대한 질문"
+      placeholder: "왜 필요한가? 어떤 문제를 해결하는가?"
+    validations:
+      required: true
+
+  # 기능 설명
+  - type: textarea
+    id: description
+    attributes:
+      label: "📄 설명"
+      description: "기능의 배경, 목적, 기대 효과"
+      placeholder: "왜 필요한가? 어떤 문제를 해결하는가?"
+    validations:
+      required: true
+
+  # API 명세서
+  - type: textarea
+    id: api_spec
+    attributes:
+      label: "🔌 API 명세서"
+      description: "엔드포인트/요청/응답/에러 규격 (필요 없으면 비워두세요)"
+      placeholder:
+      render: markdown
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: "🧪 결과"
+      description: "Done 판정 기준(정확성/성능/문서화 등)"
+      placeholder:
+
+  # 우선순위/일정
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "🏷 우선순위"
+      options:
+        - P0(Critical)
+        - P1(High)
+        - P2(Normal)
+        - P3(Low)
+      default: 2
+
+  - type: input
+    id: due
+    attributes:
+      label: "🗓 목표일"
+      description: "YYYY-MM-DD 형식"
+      placeholder: "2025-12-31"
+
+  # 참고 자료
+  - type: textarea
+    id: references
+    attributes:
+      label: "🔗 참고 자료"
+      description: "관련 문서/설계/논의/링크 등"
+      placeholder: "- 링크 또는 간단한 메모"
+      render: markdown
+
