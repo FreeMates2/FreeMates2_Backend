@@ -35,6 +35,8 @@ public class Review extends BaseEntity {
   @JoinColumn(name = "user_id", nullable = false)
   private User user;
 
+  private Integer userUniversityId; // 리뷰 작성 당시 사용자의 대학 ID
+
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "place_id", nullable = false)
   private Place place;

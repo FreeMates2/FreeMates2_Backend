@@ -4,41 +4,42 @@ import static jakarta.persistence.FetchType.LAZY;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import project.freemates2.api.university.domain.University;
-import project.freemates2.global.jpa.domain.entity.BaseEntity;
 
 @Entity
 @Getter
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User extends BaseEntity {
+public class UserUniversityVerification {
+
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(updatable = false, nullable = false)
   private UUID id;
 
-  private String nickname;
+  @ManyToOne(fetch = LAZY)
+  private User user;
 
-  private Role role;
-
-  private String email; // 로그인용 이메일(OAuth2 제공자에서 받은 이메일)
-
-  private String providerUserId; // OAuth2 제공자에서 받은 사용자 ID
-
-  @OneToOne(fetch = LAZY) // 메인 화면 대표 학교 하나
+  @ManyToOne(fetch = LAZY)
   private University university;
 
-  private boolean isStudentVerified;
+  private String studentEmail;
+
+  private LocalDateTime verifiedAt; // 인증 시점 (수동)
+
+
+
 
 }

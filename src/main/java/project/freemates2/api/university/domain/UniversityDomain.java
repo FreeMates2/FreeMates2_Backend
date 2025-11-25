@@ -1,11 +1,10 @@
 package project.freemates2.api.university.domain;
 
-import jakarta.persistence.Column;
+import static jakarta.persistence.FetchType.LAZY;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.util.UUID;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,20 +16,14 @@ import project.freemates2.global.jpa.domain.entity.BaseEntity;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class University {
+public class UniversityDomain extends BaseEntity {
 
   @Id
-  @Column(updatable = false, nullable = false)
   private Integer id;
 
-  private String name;
+  @ManyToOne(fetch = LAZY)
+  private University university;
 
-  private String slug;
-
-  private int lat; // 위도
-
-  private int lng; // 경도
-
-  private String iconUrl;
+  private String domain;
 
 }
