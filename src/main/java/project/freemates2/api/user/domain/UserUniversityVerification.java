@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ import project.freemates2.global.jpa.domain.entity.BaseEntity;
 @Getter
 @SuperBuilder
 @NoArgsConstructor
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "university_id"}))
 @AllArgsConstructor
 public class UserUniversityVerification extends BaseEntity {
 
