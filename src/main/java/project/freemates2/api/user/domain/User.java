@@ -1,7 +1,5 @@
 package project.freemates2.api.user.domain;
 
-import static jakarta.persistence.FetchType.LAZY;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,15 +7,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
-import lombok.Builder.Default;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import project.freemates2.api.university.domain.University;
 import project.freemates2.global.jpa.domain.entity.BaseEntity;
 
 @Entity
@@ -33,7 +28,8 @@ public class User extends BaseEntity {
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private Role role;
+  @Builder.Default
+  private Role role = Role.USER;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
