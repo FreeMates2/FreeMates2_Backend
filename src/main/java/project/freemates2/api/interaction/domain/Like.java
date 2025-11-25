@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +21,7 @@ import project.freemates2.global.jpa.domain.entity.BaseEntity;
 
 @Entity
 @Getter
+@Table(name = "likes")
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
