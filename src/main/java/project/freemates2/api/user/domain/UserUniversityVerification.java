@@ -24,7 +24,9 @@ import project.freemates2.global.jpa.domain.entity.BaseEntity;
 @Getter
 @SuperBuilder
 @NoArgsConstructor
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "university_id"}))
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"user_id", "university_id"}),
+    @UniqueConstraint(columnNames = {"student_email", "university_id"})})
 @AllArgsConstructor
 public class UserUniversityVerification extends BaseEntity {
 
@@ -41,7 +43,7 @@ public class UserUniversityVerification extends BaseEntity {
   @JoinColumn(name = "university_id", nullable = false)
   private University university;
 
-  @Column(nullable = false, unique = true)
+  @Column(nullable = false)
   private String studentEmail;
 
   private LocalDateTime verifiedAt; // 인증 시점 (수동)
