@@ -48,13 +48,27 @@ public class User extends BaseEntity {
 
 
   // 메인 화면 대표 학교 하나
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "university_id")
-  private University university;
+  private Integer universityId;
+
+  private String nickname; // 닉네임
 
   private Integer birthYear; // 생년
 
 
   private boolean isProfileCompleted; // 프로필 작성 완료 여부
+
+  // == 비즈니스 메서드 == //
+
+  public void completeProfile() {
+    this.isProfileCompleted = true;
+  }
+
+  public void changeUniversity(Integer universityId) {
+    this.universityId = universityId;
+  }
+
+  public void changeBirthYear(Integer birthYear) {
+    this.birthYear = birthYear;
+  }
 
 }
