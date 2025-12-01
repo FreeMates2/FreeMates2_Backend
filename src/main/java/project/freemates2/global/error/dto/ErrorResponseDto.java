@@ -1,6 +1,7 @@
 package project.freemates2.global.error.dto;
 
-import phytolens.global.error.domain.ErrorCode;
+
+import project.freemates2.global.error.domain.ErrorCode;
 
 public record ErrorResponseDto(int code, String message) {
 
