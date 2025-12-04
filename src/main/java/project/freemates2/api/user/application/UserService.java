@@ -24,9 +24,8 @@ public class UserService {
     User user = User.builder()
         .provider(dto.provider())
         .providerUserId(dto.providerUserId())
-        .email(dto.email())
-        .role(Role.USER)
-        .profileCompleted(false)   // 온보딩 전
+        .role(Role.ROLE_USER)
+        .isProfileCompleted(false)  // 온보딩 전
         .build();
 
     return userRepository.save(user);

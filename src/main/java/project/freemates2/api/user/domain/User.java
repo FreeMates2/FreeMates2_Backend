@@ -4,12 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import java.util.UUID;
@@ -18,15 +15,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import project.freemates2.api.university.domain.University;
 import project.freemates2.global.jpa.domain.entity.BaseEntity;
 
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"provider", "provider_user_id"}))
 @Getter
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 public class User extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
@@ -36,16 +32,13 @@ public class User extends BaseEntity {
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   @Builder.Default
-  private Role role = Role.USER;
+  private Role role = Role.ROLE_USER;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private AuthProvider provider;
 
-  private String email; // 로그인용 이메일(OAuth2 제공자에서 받은 이메일)
-
   private String providerUserId; // OAuth2 제공자에서 받은 사용자 ID
-
 
   // 메인 화면 대표 학교 하나
   private Integer universityId;
