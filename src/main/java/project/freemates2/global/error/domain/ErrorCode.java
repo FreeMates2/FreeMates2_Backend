@@ -17,8 +17,10 @@ public enum ErrorCode {
   BAD_REQUEST(1001, "Bad Request", HttpStatus.BAD_REQUEST),
 
   /**
-   * 2XXX -> Place 에러
+   * 2XXX -> User 에러
    */
+
+  UNSUPPORTED_PROVIDER(2001, "Unsupported Auth Provider", HttpStatus.BAD_REQUEST)
 
 
 
