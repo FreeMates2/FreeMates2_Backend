@@ -22,7 +22,12 @@ import project.freemates2.global.jpa.domain.entity.BaseEntity;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(
+    name = "users",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"provider", "providerUserId"})
+    }
+)
 public class User extends BaseEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
@@ -47,10 +52,14 @@ public class User extends BaseEntity {
 
   private Integer birthYear; // 생년
 
+  @Enumerated(EnumType.STRING) // ★ 여기가 핵심!
+  private Gender gender;
+
+
 
   private boolean isProfileCompleted; // 프로필 작성 완료 여부
 
-  // == 비즈니스 메서드 == //
+  // 비즈니스 메서드
 
   public void completeProfile() {
     this.isProfileCompleted = true;
@@ -63,5 +72,25 @@ public class User extends BaseEntity {
   public void changeBirthYear(Integer birthYear) {
     this.birthYear = birthYear;
   }
+
+  public void changeGender(Gender gender) {
+    this.gender = gender;
+  }
+
+  public void changeNickname(String nickname) {
+    this.nickname = nickname;
+  }
+
+  public void completeOnboarding(String nickname,
+      Integer birthYear,
+      Integer universityId,
+      Gender gender) {
+    this.nickname = nickname;
+    this.birthYear = birthYear;
+    this.universityId = universityId;
+    this.gender = gender;
+    this.isProfileCompleted = true;
+  }
+
 
 }
