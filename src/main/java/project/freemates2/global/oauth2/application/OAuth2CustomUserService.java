@@ -24,11 +24,10 @@ public class OAuth2CustomUserService implements OAuth2UserService<OAuth2UserRequ
   private final UserService userService;
   @Override
   public OAuth2User loadUser(OAuth2UserRequest userRequest) {
-    // 기본 OAuth2User 가져오기
     OAuth2User delegate = new DefaultOAuth2UserService().loadUser(userRequest);
     Map<String, Object> attributes = delegate.getAttributes();
 
-    // provider 판별 (kakao / naver)
+    // provider 판별
     String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
     // provider별 UserInfo 생성

@@ -42,7 +42,8 @@ public class OAuth2Attributes {
 
     @Override
     public String providerId() {
-      return (String) response().get("id");
+      var res = response();
+      return res != null ? (String) res.get("id") : null;
     }
 
     @Override
@@ -52,7 +53,8 @@ public class OAuth2Attributes {
 
     @Override
     public String email() {
-      return (String) response().get("email");
+      var res = response();
+      return res != null ? (String) res.get("email") : null;
     }
   }
 

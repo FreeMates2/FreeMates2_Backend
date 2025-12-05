@@ -10,7 +10,7 @@ public record OAuth2UserDto(
 ) {
 
   public static OAuth2UserDto from(OAuth2UserInfo info) {
-    AuthProvider provider = AuthProvider.valueOf(info.provider().toUpperCase());
+    AuthProvider provider = AuthProvider.fromString(info.provider());
     return new OAuth2UserDto(provider, info.providerId(), info.email());
   }
 }

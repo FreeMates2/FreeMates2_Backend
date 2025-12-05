@@ -31,17 +31,16 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
     UUID userId = principal.getUserId();
 
     User user = userRepository.findById(userId)
-        .orElseThrow(); // 필요하면 CustomException으로 변경
+        .orElseThrow();
 
+    String targetUrl;
     if (!user.isProfileCompleted()) {
-      // 프로필 완성 안 된 경우 온보딩 페이지로 리다이렉트
-      setDefaultTargetUrl("/onboarding");
+      targetUrl = "/onboarding";
     } else {
-      // 프로필 완성된 경우 메인 페이지로 리다이렉트
-      setDefaultTargetUrl("/");
+      targetUrl = "/";
     }
 
-    super.onAuthenticationSuccess(request, response, authentication);
+    getRedirectStrategy().sendRedirect(request, response, targetUrl);
   }
 }
 

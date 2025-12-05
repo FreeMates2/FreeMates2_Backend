@@ -3,6 +3,8 @@ package project.freemates2.api.tag.domain;
 import static jakarta.persistence.FetchType.LAZY;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import java.util.UUID;
@@ -24,6 +26,7 @@ public class Tagging {
   @ManyToOne(fetch = LAZY)
   private Tag tag;
 
+  @Enumerated(EnumType.STRING)
   private TagCategory targetType;
 
   private UUID targetId;
