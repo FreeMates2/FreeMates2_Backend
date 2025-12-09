@@ -1,11 +1,14 @@
 package project.freemates2.api.user.application;
 
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import project.freemates2.api.user.domain.Gender;
 import project.freemates2.api.user.domain.Role;
 import project.freemates2.api.user.domain.User;
 import project.freemates2.api.user.domain.UserRepository;
+import project.freemates2.api.user.dto.OnboardingRequest;
 import project.freemates2.global.oauth2.dto.OAuth2UserDto;
 
 @RequiredArgsConstructor
@@ -29,6 +32,23 @@ public class UserService {
         .build();
 
     return userRepository.save(user);
+  }
+
+  @Transactional
+  public void completeOnboarding(UUID userId, OnboardingRequest req) {
+    User user = userRepository.findById(userId)
+        .orElseThrow(() -> new IllegalStateException("User not found"));
+
+    Gender gender = req.gender() != null
+        ? Gender.valueOf(req.gender().toUpperCase()) // "FEMALE", "MALE" 등
+        : null; // 선택값이면 null 허용
+
+    user.completeOnboarding(
+        req.nickname(),
+        req.birthYear(),
+        req.universityId(),
+        gender
+    );
   }
 
 

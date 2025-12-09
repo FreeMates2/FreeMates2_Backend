@@ -3,6 +3,7 @@ package project.freemates2.api.user.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import project.freemates2.api.user.exception.UnsupportedProviderException;
+import project.freemates2.global.util.EnumUtils;
 
 @Getter
 @AllArgsConstructor
@@ -16,10 +17,10 @@ public enum AuthProvider {
 
 
   public static AuthProvider fromString(String provider) {
-    try {
-      return valueOf(provider.toUpperCase());
-    } catch (IllegalArgumentException e) {
-      throw UnsupportedProviderException.INSTANCE;
-    }
+    return EnumUtils.parseIgnoreCaseOrThrow(
+        provider,
+        AuthProvider.class,
+        UnsupportedProviderException.INSTANCE
+    );
   }
 }
