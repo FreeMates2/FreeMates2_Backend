@@ -20,9 +20,6 @@ public class AuthController {
   @PostMapping("/token")
   public ResponseEntity<TokenResponse> issueAccessToken(HttpServletRequest request){
     String refreshToken = extractRefreshTokenFromCookie(request);
-    if (refreshToken == null || refreshToken.isEmpty()) {
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
     String accessToken = authService.issueAccessToken(refreshToken);
     return ResponseEntity.ok(new TokenResponse(accessToken));
 

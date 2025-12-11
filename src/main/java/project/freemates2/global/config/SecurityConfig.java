@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import project.freemates2.external.oauth2.application.OAuth2CustomUserService;
 import project.freemates2.external.oauth2.infrastructure.OAuth2LoginSuccessHandler;
@@ -25,8 +26,7 @@ public class SecurityConfig {
     http
         .cors(withDefaults())
         .csrf(csrf -> csrf.disable())
-        // jwt 사용 시 아래 주석 해제
-//        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authz -> authz
             .requestMatchers(SecurityConstants.AUTH_WHITELIST).permitAll()
             .requestMatchers("/admin/**").hasRole("ADMIN") // "/admin/" 경로는 관리자만 출입 가능

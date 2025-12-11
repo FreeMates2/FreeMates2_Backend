@@ -1,7 +1,5 @@
 package project.freemates2.global.config;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class SecurityConstants {
   // 인스턴스 생성 방지
@@ -19,9 +17,6 @@ public class SecurityConstants {
       "/api/users/check/**",
       "/api/users/signup",
       "/api/users/login",
-      "/api/posts/**",
-      "/api/comments/**",
-      "/api/**",
       "/docs/**"
   };
 

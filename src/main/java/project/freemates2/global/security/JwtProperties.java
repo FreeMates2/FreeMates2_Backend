@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-// Redis 설정값
+// JWT 설정값
 @ConfigurationProperties(prefix = "jwt")
 @Getter
 @Setter
@@ -17,4 +17,5 @@ public class JwtProperties {
   private Duration accessExpTime;
   private Duration refreshExpTime;
   private String tokenPrefix;
+  private Boolean cookieSecure;
 }

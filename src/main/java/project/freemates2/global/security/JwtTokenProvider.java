@@ -2,6 +2,7 @@ package project.freemates2.global.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.UUID;
 import javax.crypto.SecretKey;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.oauth2.jwt.JwtException;
+
 import org.springframework.stereotype.Component;
 import project.freemates2.api.user.domain.Role;
 
@@ -68,6 +69,14 @@ public class JwtTokenProvider {
     }
   }
 
+
+  /**
+   * 토큰에서 사용자 ID를 추출합니다.
+   * @param token 유효한 JWT 토큰
+   * @return 사용자 UUID
+   * @throws JwtException 토큰 파싱 실패 시
+   * @throws IllegalArgumentException subject가 UUID 형식이 아닐 경우
+   */
   // 토큰에서 사용자 ID 추출 메서드
   public UUID getUserId(String token) {
     Claims claims = parse(token).getPayload();

@@ -5,6 +5,7 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Service;
+import project.freemates2.global.error.BusinessException;
 import project.freemates2.global.error.ErrorCode;
 import project.freemates2.global.security.JwtProperties;
 import project.freemates2.global.security.JwtTokenProvider;
@@ -24,8 +25,7 @@ public class AuthService {
 
     ResponseCookie cookie = ResponseCookie.from("refreshToken", refreshToken)
         .httpOnly(true)
-        // 추후에 배포시 true로 변경
-        .secure(false)
+        .secure(jwtProperties.getCookieSecure())
         .path("/")
         .maxAge(jwtProperties.getRefreshExpTime().getSeconds())
         .sameSite("Lax")
@@ -36,10 +36,10 @@ public class AuthService {
 
   public String issueAccessToken(String refreshToken) {
     if(refreshToken == null || refreshToken.isEmpty()) {
-      throw new IllegalArgumentException(ErrorCode.TOKEN_MISSING.getMessage());
+      throw new BusinessException(ErrorCode.TOKEN_MISSING);
     }
     if(!jwtTokenProvider.isValid(refreshToken)) {
-      throw new IllegalArgumentException(ErrorCode.INVALID_TOKEN.getMessage());
+      throw new BusinessException(ErrorCode.INVALID_TOKEN);
     }
     UUID userId = jwtTokenProvider.getUserId(refreshToken);
     var user = userService.getUserById(userId);

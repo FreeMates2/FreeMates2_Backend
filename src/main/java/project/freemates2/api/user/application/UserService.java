@@ -55,7 +55,7 @@ public class UserService {
   @Transactional(readOnly = true)
   public User getUserById(UUID userId) {
     return userRepository.findById(userId)
-        .orElseThrow( () -> new UsernameNotFoundException(ErrorCode.USER_NOT_FOUND.getMessage()+ userId)
+        .orElseThrow( () -> new UsernameNotFoundException(ErrorCode.USER_NOT_FOUND.getMessage()+":"+ userId)
         );
   }
 
