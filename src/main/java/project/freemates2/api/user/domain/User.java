@@ -15,7 +15,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import project.freemates2.global.jpa.domain.entity.BaseEntity;
+import project.freemates2.global.common.BaseEntity;
 
 @Entity
 @Getter
@@ -54,8 +54,6 @@ public class User extends BaseEntity {
 
   @Enumerated(EnumType.STRING) // ★ 여기가 핵심!
   private Gender gender;
-
-
 
   private boolean isProfileCompleted; // 프로필 작성 완료 여부
 

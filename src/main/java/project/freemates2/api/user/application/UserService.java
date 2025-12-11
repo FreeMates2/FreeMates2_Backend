@@ -2,6 +2,7 @@ package project.freemates2.api.user.application;
 
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.freemates2.api.user.domain.Gender;
@@ -9,7 +10,8 @@ import project.freemates2.api.user.domain.Role;
 import project.freemates2.api.user.domain.User;
 import project.freemates2.api.user.domain.UserRepository;
 import project.freemates2.api.user.dto.OnboardingRequest;
-import project.freemates2.global.oauth2.dto.OAuth2UserDto;
+import project.freemates2.external.oauth2.dto.OAuth2UserDto;
+import project.freemates2.global.error.ErrorCode;
 
 @RequiredArgsConstructor
 @Service
@@ -36,8 +38,7 @@ public class UserService {
 
   @Transactional
   public void completeOnboarding(UUID userId, OnboardingRequest req) {
-    User user = userRepository.findById(userId)
-        .orElseThrow(() -> new IllegalStateException("User not found"));
+    User user = getUserById(userId);
 
     Gender gender = req.gender() != null
         ? Gender.valueOf(req.gender().toUpperCase()) // "FEMALE", "MALE" 등
@@ -49,6 +50,13 @@ public class UserService {
         req.universityId(),
         gender
     );
+  }
+
+  @Transactional(readOnly = true)
+  public User getUserById(UUID userId) {
+    return userRepository.findById(userId)
+        .orElseThrow( () -> new UsernameNotFoundException(ErrorCode.USER_NOT_FOUND.getMessage()+ userId)
+        );
   }
 
 

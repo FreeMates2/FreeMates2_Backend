@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import project.freemates2.api.place.domain.Place;
-import project.freemates2.global.jpa.domain.entity.BaseEntity;
+import project.freemates2.global.common.BaseEntity;
 
 @Entity
 @Getter

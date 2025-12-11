@@ -11,13 +11,12 @@ import jakarta.persistence.ManyToOne;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import project.freemates2.api.place.domain.Place;
 import project.freemates2.api.user.domain.User;
-import project.freemates2.global.jpa.domain.entity.BaseEntity;
+import project.freemates2.global.common.BaseEntity;
 
 @Entity
 @Getter
