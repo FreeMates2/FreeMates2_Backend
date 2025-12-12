@@ -70,6 +70,12 @@ dependencies {
     // OAuth2 클라이언트 기능 포함 (소셜 로그인 등)
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
+    // JJWT API
+    implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
+    // JJWT 구현체 (런타임 시 필요)
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0' // JSON 처리용
+
 }
 
 tasks.named('test') {

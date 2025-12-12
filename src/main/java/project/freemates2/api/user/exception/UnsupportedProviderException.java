@@ -1,6 +1,6 @@
 package project.freemates2.api.user.exception;
 
-import project.freemates2.global.error.domain.ErrorCode;
+import project.freemates2.global.error.ErrorCode;
 
 public class UnsupportedProviderException extends RuntimeException {
 

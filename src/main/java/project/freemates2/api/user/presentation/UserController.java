@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import project.freemates2.api.user.application.UserService;
 import project.freemates2.api.user.dto.OnboardingRequest;
-import project.freemates2.global.oauth2.domain.OAuth2UserPrincipal;
+import project.freemates2.external.oauth2.domain.OAuth2UserPrincipal;
 
 @RestController
 @RequestMapping("/api/user")
