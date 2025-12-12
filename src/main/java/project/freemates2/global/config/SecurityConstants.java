@@ -17,6 +17,7 @@ public class SecurityConstants {
       "/api/users/check/**",
       "/api/users/signup",
       "/api/users/login",
+      "/api/auth/token",
       "/docs/**"
   };
 
