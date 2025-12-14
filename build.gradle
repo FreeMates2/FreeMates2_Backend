@@ -72,12 +72,18 @@ dependencies {
 
     // JJWT API
     implementation 'io.jsonwebtoken:jjwt-api:0.13.0'
+
     // JJWT 구현체 (런타임 시 필요)
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.13.0' // JSON 처리용
+
+
+    // Reactor Test (StepVerifier 등 webflux 비동기 테스트용)
+    testImplementation 'io.projectreactor:reactor-test'
 
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
