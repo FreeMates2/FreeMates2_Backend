@@ -32,7 +32,8 @@ public class JwtProperties {
     }
 
     if (secretKey.getBytes(StandardCharsets.UTF_8).length < 32){
-      throw new IllegalStateException("jwt.secretKey must be at least 32 bytes long (>= 256-bit for HS256)");    }
+      throw new IllegalStateException("jwt.secretKey must be at least 32 bytes long (>= 256-bit for HS256)");
+    }
 
 
   }

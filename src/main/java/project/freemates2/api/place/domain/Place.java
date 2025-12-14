@@ -27,13 +27,13 @@ public class Place extends BaseEntity {
 
   private String kakaoPlaceId;
 
-  private String name;
+  private String placeName;
 
-  private String address;
+  private String addressName;
 
-  private String category;
+  private PlaceCategoryType category;
 
-  private String roadAddress;
+  private String roadAddressName;
 
   @Builder.Default
   private Long likeCount = 0L;
@@ -41,9 +41,12 @@ public class Place extends BaseEntity {
   @Builder.Default
   private Long reviewCount = 0L;
 
-  private Double lat; // 위도
+  @Builder.Default
+  private Long viewCount = 0L;
 
-  private Double lng; // 경도
+  private Double x; // 위도
+
+  private Double y; // 경도
 
   private String phone;
 
@@ -52,5 +55,11 @@ public class Place extends BaseEntity {
   private String imageUrl;
 
   private boolean isActive;
+
+  private Double averageRating;
+
+  private String distance;
+
+
 
 }
